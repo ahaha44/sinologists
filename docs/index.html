@@ -81,13 +81,14 @@
                     <a href="#scholars" class="text-gray-700 hover:text-purple-600 transition-colors">著名学者</a>
                     <a href="#fields" class="text-gray-700 hover:text-purple-600 transition-colors">研究领域</a>
                     <a href="#impact" class="text-gray-700 hover:text-purple-600 transition-colors">影响</a>
+                                    <img src="assets/images/logo.jpg" alt="Logo" class="h-10 w-auto hidden sm:block"/>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="container mx-auto px-4 py-16">
+    <section class="container mx-auto px-4 py-16" style="background-image:url('assets/images/banner.jpg'); background-size:cover; background-position:center; border-radius:1rem;">
         <div class="text-center slide-in">
             <svg class="icon mx-auto mb-4 text-purple-600 rotate-slow" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10"/>
@@ -200,49 +201,22 @@
             </div>
         </div>
     </section>
-
-    <!-- Famous Scholars -->
-    <section id="scholars" class="container mx-auto px-4 py-12">
-        <h3 class="text-3xl font-bold mb-8 text-center gradient-text">著名汉学家 (Famous Sinologists)</h3>
-        <div class="grid md:grid-cols-3 gap-6">
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                <div class="bg-gradient-to-r from-blue-500 to-purple-500 p-4">
-                    <h4 class="text-white font-bold text-xl">利玛窦 (Matteo Ricci)</h4>
-                    <p class="text-white/90 text-sm">1552-1610</p>
-                </div>
-                <div class="p-6">
-                    <p class="text-gray-700 mb-3">意大利传教士，西方汉学先驱</p>
-                    <div class="bg-purple-50 p-3 rounded">
-                        <p class="text-sm text-purple-800">主要贡献：《天主实义》、中西文化交流</p>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                <div class="bg-gradient-to-r from-green-500 to-blue-500 p-4">
-                    <h4 class="text-white font-bold text-xl">费正清 (John K. Fairbank)</h4>
-                    <p class="text-white/90 text-sm">1907-1991</p>
-                </div>
-                <div class="p-6">
-                    <p class="text-gray-700 mb-3">美国汉学家，现代中国研究奠基人</p>
-                    <div class="bg-blue-50 p-3 rounded">
-                        <p class="text-sm text-blue-800">主要贡献：哈佛大学东亚研究中心创始人</p>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                <div class="bg-gradient-to-r from-pink-500 to-orange-500 p-4">
-                    <h4 class="text-white font-bold text-xl">史景迁 (Jonathan Spence)</h4>
-                    <p class="text-white/90 text-sm">1936-2021</p>
-                </div>
-                <div class="p-6">
-                    <p class="text-gray-700 mb-3">英国裔美国汉学家，历史叙事大师</p>
-                    <div class="bg-orange-50 p-3 rounded">
-                        <p class="text-sm text-orange-800">主要贡献：《追寻现代中国》等著作</p>
-                    </div>
-                </div>
-            </div>
+    <!-- People (embedded index) -->
+    <section id="people" class="container mx-auto px-4 py-12">
+      <div class="bg-white rounded-2xl shadow-xl p-8">
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center gap-3">
+            <svg class="h-6 w-6 text-purple-600" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.33 0-6 2.24-6 5v1h12v-1c0-2.76-2.67-5-6-5z"/></svg>
+            <div class="text-sm text-gray-600">总人数</div>
+            <div id="totalCount" class="text-2xl font-bold">0</div>
+          </div>
+          <input id="q" type="search" placeholder="搜索姓名（支持片段）" class="w-full md:w-80 border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300"/>
         </div>
+        <ul id="list" class="grid md:grid-cols-3 gap-3"></ul>
+        <div class="text-right mt-4"><a class="text-purple-600 hover:underline" href="people/">查看更多</a></div>
+      </div>
     </section>
+
 
     <!-- Research Fields -->
     <section id="fields" class="container mx-auto px-4 py-12">
@@ -348,51 +322,6 @@
         </div>
     </section>
 
-    <!-- Interactive Code Example -->
-    <section class="container mx-auto px-4 py-12">
-        <div class="bg-gray-900 rounded-2xl shadow-xl p-8">
-            <h3 class="text-2xl font-bold mb-6 text-white">数字人文示例 (Digital Humanities Example)</h3>
-            <p class="text-gray-300 mb-4">使用Python分析古典文本的简单示例：</p>
-            <pre><code class="language-javascript">// 分析《论语》文本频率的示例代码
-const analyzeText = (text) => {
-    const words = text.split('');
-    const frequency = {};
-    
-    words.forEach(word => {
-        if (word.trim()) {
-            frequency[word] = (frequency[word] || 0) + 1;
-        }
-    });
-    
-    return Object.entries(frequency)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 10);
-};
-
-// 示例文本
-const sample = "学而时习之，不亦说乎？有朋自远方来，不亦乐乎？";
-const result = analyzeText(sample);
-
-console.log("最常见的字符：");
-result.forEach(([char, count]) => {
-    console.log(`${char}: ${count}次`);
-});</code></pre>
-        </div>
-    </section>
-
-    <!-- People (embedded index) -->
-    <section id="people" class="container mx-auto px-4 py-12">
-      <div class="bg-white rounded-2xl shadow-xl p-8">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-          <h3 class="text-3xl font-bold gradient-text">学者索引</h3>
-          <input id="q" type="search" placeholder="搜索姓名（支持片段）" class="w-full md:w-80 border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300"/>
-        </div>
-        <div id="count" class="text-gray-600 mb-3"></div>
-        <ul id="list" class="grid md:grid-cols-3 gap-3"></ul>
-        <p class="text-sm text-gray-500 mt-6">许可与归属见 <a class="underline" href="attribution.html">Attribution</a></p>
-      </div>
-    </section>
-
     <!-- Footer -->
     <footer class="mt-16 py-8 bg-white/50 backdrop-blur">
         <div class="container mx-auto px-4 text-center">
@@ -400,79 +329,44 @@ result.forEach(([char, count]) => {
         </div>
     </footer>
 
-    <script>
-        // Add interactive features
-        document.addEventListener('DOMContentLoaded', function() {
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-
-            // Add interactive hover effects to cards
-            const cards = document.querySelectorAll('.card-hover');
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px) scale(1.02)';
-                });
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-            });
-
-            // Interactive counter animation
-            const counters = document.querySelectorAll('.text-3xl.font-bold');
-            counters.forEach(counter => {
-                const target = parseInt(counter.innerText.replace(/[^0-9]/g, ''));
-                let current = 0;
-                const increment = target / 50;
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        counter.innerText = counter.innerText.replace(/[0-9]+/, target);
-                        clearInterval(timer);
-                    } else {
-                        counter.innerText = counter.innerText.replace(/[0-9]+/, Math.floor(current));
-                    }
-                }, 30);
-            });
-        });
-    </script>
+    
 
     <script>
     function escapeRegExp(str){return str.replace(/[.*+?^${}()|[\]\]/g,'\\$&');}
     function debounce(fn,delay){let t; return (...a)=>{clearTimeout(t); t=setTimeout(()=>fn(...a),delay)}}
-    async function renderPeople(){
+    async function initPeople(){
       try{
         const res = await fetch('manifest.json');
         const data = await res.json();
         const items = data.map(x=>({ name:x.name, url:'people/'+(x.file||'').split('/').pop() }))
-                          .filter(x=>x.name && x.url);
-        const list=document.getElementById('list'); const q=document.getElementById('q'); const count=document.getElementById('count');
+                          .filter(x=>x.name && x.url)
+                          .sort((a,b)=>a.name.localeCompare(b.name));
+        const total = items.length;
+        const subset = items.slice(0, 24); // 仅展示部分
+        const list = document.getElementById('list');
+        const q = document.getElementById('q');
+        const count = document.getElementById('totalCount');
         if(!list||!q||!count) return;
+        count.textContent = String(total);
+        let current = subset;
         function render(filter=''){
-          const t=filter.trim().toLowerCase();
-          const filtered=t?items.filter(i=>i.name.toLowerCase().includes(t)):items;
-          count.textContent=`当前显示 ${filtered.length} / 共 ${items.length}`;
-          const frag=document.createDocumentFragment();
+          const t = filter.trim().toLowerCase();
+          const filtered = t ? subset.filter(i=>i.name.toLowerCase().includes(t)) : subset;
+          const frag = document.createDocumentFragment();
           filtered.forEach(i=>{
-            const li=document.createElement('li'); const a=document.createElement('a');
-            a.href=i.url; a.target='_blank'; a.rel='noopener'; a.className='block w-full border rounded-lg bg-white hover:shadow px-4 py-3';
-            if(t){const re=new RegExp(escapeRegExp(t),'ig'); a.innerHTML=i.name.replace(re,m=>`<mark class=\"bg-yellow-200\">${m}</mark>`);} else {a.textContent=i.name;}
+            const li=document.createElement('li');
+            const a=document.createElement('a'); a.href=i.url; a.target='_blank'; a.rel='noopener';
+            a.className='block w-full border rounded-lg bg-white hover:shadow px-4 py-3';
+            if(t){ const re=new RegExp(escapeRegExp(t),'ig'); a.innerHTML = i.name.replace(re,m=>`<mark class=\"bg-yellow-200\">${m}</mark>`);} else { a.textContent=i.name; }
             li.appendChild(a); frag.appendChild(li);
           });
           list.innerHTML=''; list.appendChild(frag);
         }
         q.addEventListener('input', debounce(()=>render(q.value), 150));
         render('');
-      }catch(e){console.error(e);}
+      }catch(e){ console.error(e); }
     }
-    document.addEventListener('DOMContentLoaded', renderPeople);
+    document.addEventListener('DOMContentLoaded', initPeople);
     </script>
 </body>
 </html>
